@@ -26,7 +26,7 @@ void printBoard(){
             if(board[i][j]==0){
                 printf("    ");
             }else{
-                printf("%2d", board[i][j]);
+                printf("%3d", board[i][j]);
             }
         }
         printf("\n");
