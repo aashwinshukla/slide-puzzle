@@ -1,2 +1,3 @@
 # slide-puzzle
 ## C Program
+### This my first ever C language project and its been 1 week since I started C. This project revolves around a sliding-puzzle game, where there are 16 tiles in a 4×4 space with number from 1 to 15 with one blank space , all randomly palaced. Main goal of the game is to arrange the number from 1 to 15 from top left corner to bottom right last second tile (with blank space on the last tile).  
