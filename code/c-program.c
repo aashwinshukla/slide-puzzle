@@ -10,6 +10,7 @@ int board[SIZE][SIZE]={
     {12, 9, 5, 0}
 };
 
+
 int answer[SIZE][SIZE]={
     {1, 2, 3, 4},
     {5, 6, 7, 8}, 
@@ -74,40 +75,50 @@ int main(){
     printf("Q-quit\n");
 
     while(flag){
+        bool won = true;
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (board[i][j] != answer[i][j]) {
+                    won = false;
+                    break;
+                }
+            }
+            if (!won) break;
+        }
+    
+        if (won) {   
+            printBoard(); // Optional: prints the final winning board
+            printf("\n---YOU WON---\n");
+            flag = false;
+            break;
+        }
+    
         printBoard();
         printf("\n enter your input\n");
         scanf(" %c", &input);
 
-        for(int i=0;i<SIZE;i++){
-            for(int j=0; j<SIZE; j++){
-                if(board[i][j]!=answer[i][j]){
-                    flag=true;
-                    break;
-                }
-            }
-        }
 
-        if(board[0][0]==answer[0][0] &&
-            board[0][1]==answer[0][1] &&
-            board[0][2]==answer[0][2] &&
-            board[0][3]==answer[0][3] &&
-            board[1][0]==answer[1][0] &&
-            board[1][1]==answer[1][1] &&
-            board[1][2]==answer[1][2] &&
-            board[1][3]==answer[1][3] &&
-            board[2][0]==answer[2][0] &&
-            board[2][1]==answer[2][1] &&
-            board[2][2]==answer[2][2] &&
-            board[2][3]==answer[2][3] &&
-            board[3][0]==answer[3][0] &&
-            board[3][1]==answer[3][1] &&
-            board[3][2]==answer[3][2] &&
-            board[3][3]==answer[3][3] )
-        {   
-            printf("\n---YOU WON---\n");
-            flag=false;
-            break;
-        }
+        // if(board[0][0]==answer[0][0] &&
+        //     board[0][1]==answer[0][1] &&
+        //     board[0][2]==answer[0][2] &&
+        //     board[0][3]==answer[0][3] &&
+        //     board[1][0]==answer[1][0] &&
+        //     board[1][1]==answer[1][1] &&
+        //     board[1][2]==answer[1][2] &&
+        //     board[1][3]==answer[1][3] &&
+        //     board[2][0]==answer[2][0] &&
+        //     board[2][1]==answer[2][1] &&
+        //     board[2][2]==answer[2][2] &&
+        //     board[2][3]==answer[2][3] &&
+        //     board[3][0]==answer[3][0] &&
+        //     board[3][1]==answer[3][1] &&
+        //     board[3][2]==answer[3][2] &&
+        //     board[3][3]==answer[3][3] )
+        // {   
+        //     printf("\n---YOU WON---\n");
+        //     flag=false;
+        //     break;
+        // }
 
 
         if(input=='q' || input=='Q'){
