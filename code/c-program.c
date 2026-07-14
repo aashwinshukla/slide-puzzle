@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stdbool.h>
+
 #define SIZE 4
 
 int board[SIZE][SIZE]={
@@ -42,9 +44,9 @@ void moveTile(char direction){
     }else if(direction == 's' || direction == 'S'){
         targetRow++;
     }else if(direction == 'a' || direction == 'A'){
-        targetColumn++;
-    }else if(direction == 'd' || direction == 'D'){
         targetColumn--;
+    }else if(direction == 'd' || direction == 'D'){
+        targetColumn++;
     }else return; 
 
 
@@ -61,6 +63,7 @@ void moveTile(char direction){
 
 int main(){
     char input;
+    bool flag=true;
 
     printf("\n---welcome to 15-puzzle---\n");
     printf("following are your control:\n");
@@ -70,20 +73,42 @@ int main(){
     printf("D-move the blank tile left\n");
     printf("Q-quit\n");
 
-    while(1){
+    while(flag){
         printBoard();
         printf("\n enter your input\n");
-        scanf("%d", &input);
+        scanf(" %c", &input);
 
         for(int i=0;i<SIZE;i++){
             for(int j=0; j<SIZE; j++){
                 if(board[i][j]!=answer[i][j]){
-                    return 0;
-                }else{
-                    printf("\n---YOU WON---\n ");
+                    flag=true;
+                    break;
                 }
             }
         }
+
+        if(board[0][0]==answer[0][0] &&
+            board[0][1]==answer[0][1] &&
+            board[0][2]==answer[0][2] &&
+            board[0][3]==answer[0][3] &&
+            board[1][0]==answer[1][0] &&
+            board[1][1]==answer[1][1] &&
+            board[1][2]==answer[1][2] &&
+            board[1][3]==answer[1][3] &&
+            board[2][0]==answer[2][0] &&
+            board[2][1]==answer[2][1] &&
+            board[2][2]==answer[2][2] &&
+            board[2][3]==answer[2][3] &&
+            board[3][0]==answer[3][0] &&
+            board[3][1]==answer[3][1] &&
+            board[3][2]==answer[3][2] &&
+            board[3][3]==answer[3][3] )
+        {   
+            printf("\n---YOU WON---\n");
+            flag=false;
+            break;
+        }
+
 
         if(input=='q' || input=='Q'){
             printf("\nthanks for playing");
